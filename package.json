@@ -1,0 +1,15 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "a tool to extract and organise highlights made on a Kindle Paperwhite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kindle",
+    "highlights"
+  ],
+  "author": "tawanda moyo",
+  "license": "ISC"
+}
