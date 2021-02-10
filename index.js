@@ -1,6 +1,10 @@
 const { connected } = require('process');
 
-fs = require('fs');
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
+
+
 fs.readFile('test.txt', 'utf8', (err, data) => {
     if (err) {
         return console.log(err)
@@ -77,6 +81,8 @@ fs.readFile('test.txt', 'utf8', (err, data) => {
         
     }
 
-    console.log(books)
+    let numberOfBooks = books.length;
+
+    console.log(`there are ${numberOfBooks} books in your list`)
 
 });
