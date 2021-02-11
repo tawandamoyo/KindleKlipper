@@ -4,6 +4,17 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
+const pathName = path.join(__dirname, '/books/');
+
+fs.mkdir(pathName, { recursive: true }, (error) => {
+    if(error) {
+        console.log('failed to make dir')
+    }
+    else {
+        console.log(`successfully created the dir: ${pathName}`);
+    }
+});
+
 
 fs.readFile('test.txt', 'utf8', (err, data) => {
     if (err) {
@@ -83,6 +94,18 @@ fs.readFile('test.txt', 'utf8', (err, data) => {
 
     let numberOfBooks = books.length;
 
-    console.log(`there are ${numberOfBooks} books in your list`)
+    console.log(`there are ${numberOfBooks} books in your list`);
+
+    books.forEach((book) => {
+        txtFilePath = pathName + book.title + '.txt';
+        for (let i = 0; i < book.highlights.length; i++) {
+            fs.appendFile(txtFilePath, book.highlights[i] + "\n\n", (error) => {
+                if (error) {
+                    console.log(error);
+                }
+            })
+        }
+    });
+    
 
 });
