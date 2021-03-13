@@ -92,9 +92,7 @@ fs.readFile('test.txt', 'utf8', (err, data) => {
         
     }
 
-    let numberOfBooks = books.length;
-
-    console.log(`there are ${numberOfBooks} books in your list`);
+    // Loop through each book and write its contents to txt file
 
     books.forEach((book) => {
         txtFilePath = pathName + book.title + '.txt';
@@ -103,7 +101,7 @@ fs.readFile('test.txt', 'utf8', (err, data) => {
                 if (error) {
                     console.log(error);
                 }
-            })
+            });
         }
     });
     
