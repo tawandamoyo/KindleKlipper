@@ -6,6 +6,9 @@ const os = require('os');
 
 const pathName = path.join(__dirname, '/books/');
 
+// this is the path to the file
+const file = process.argv[2];
+
 fs.mkdir(pathName, { recursive: true }, (error) => {
     if(error) {
         console.log('failed to make dir')
@@ -16,7 +19,7 @@ fs.mkdir(pathName, { recursive: true }, (error) => {
 });
 
 
-fs.readFile('test.txt', 'utf8', (err, data) => {
+fs.readFile(file, 'utf8', (err, data) => {
     if (err) {
         return console.log(err)
     }

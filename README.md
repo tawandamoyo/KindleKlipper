@@ -56,12 +56,20 @@ They had taken a great risk, but you did that to get ahead in life.
 The highlights follow a regular pattern, split by `==========`, 10 "="s. This allows us to split them at that point.
 
 ## Usage
-- run npm install to install
-- in `index.js` replace `test.txt` (line 19) with path to your file.
-- run `node index.js` and you will see a new folder named books containing `.txt` files of your books
+
+You should have Node installed.
+
+- run `node index.js path_to_file` where path to file is a relative or absolute path to the clippings txt file and you will see a new folder named books containing `.txt` files of your books.
+
+For example if you have `MyClippings.txt` at `Home/Desktop/MyClippings.txt`, run:
+ ```bash
+
+ node index.js Home/Desktop/MyClippings.txt
+ 
+ ```
 
 ## Requirements
-- Node
+- Node.
 
 ## Note
 Project is still in development. Kindly report any issues.
