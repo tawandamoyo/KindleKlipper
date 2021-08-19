@@ -59,13 +59,13 @@ The highlights follow a regular pattern, split by `==========`, 10 "="s. This al
 
 You should have Node installed.
 
-- run `node index.js path_to_file` where path to file is a relative or absolute path to the clippings txt file and you will see a new folder named books containing `.txt` files of your books.
+- run `node index.js path_to_file` where path to file is a relative or absolute path to the clippings txt file and you will see a new folder named books containing `.txt` files of your books. This folder resides in the same location as `index.js`.
 
 For example if you have `MyClippings.txt` at `Home/Desktop/MyClippings.txt`, run:
  ```bash
 
  node index.js Home/Desktop/MyClippings.txt
- 
+
  ```
 
 ## Requirements
