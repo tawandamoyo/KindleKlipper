@@ -71,7 +71,14 @@ For example if you have `MyClippings.txt` at `Home/Desktop/MyClippings.txt`, run
 ## Requirements
 - Node.
 
+## Issues/ Improvements
+
+- Currently the script does not distinguish betweeen Highlights and Notes
+- There is no way to sort the highlights according to any criteria, be it when they were made or their location in the book
+ 
+
 ## Note
 Project is still in development. Kindly report any issues.
 
 
+    
