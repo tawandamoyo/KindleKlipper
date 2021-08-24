@@ -6,7 +6,7 @@ const os = require('os');
 
 const pathName = path.join(__dirname, '/books/');
 
-// this is the path to the file
+// this is the path to the MyClippings.txt file
 const file = process.argv[2];
 
 fs.mkdir(pathName, { recursive: true }, (error) => {
@@ -38,10 +38,8 @@ fs.readFile(file, 'utf8', (err, data) => {
                 return;
             }
         }
-
         bookIndex = -1;
         return bookIndex;
-
     }
 
     for(let i = 0; i < clippings.length; i++) {
@@ -54,11 +52,10 @@ fs.readFile(file, 'utf8', (err, data) => {
         // TODO: separate title and author
         let title = clipping[0];
 
-
         // extract and assign the highlight
         let highlight = clipping[2];
 
-        /* TODO: get other meta details, eg location of highlight and date
+        /* TODO: get other meta details, eg location of highlight and date, and whether it is a highlight or a note.
            - these are in clipping[1], need to extract the relevant parts
         */
 
@@ -89,10 +86,7 @@ fs.readFile(file, 'utf8', (err, data) => {
                 let book = createBook(title, highlight);
                 books.push(book);
             }
-        }
-
-
-        
+        }   
     }
 
     // Loop through each book and write its contents to txt file
