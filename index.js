@@ -26,13 +26,13 @@ fs.readFile(file, 'utf8', (err, data) => {
     // the data is split into a new array called clippings
     const clippings = data.split('==========');
 
-    // declare an empty array that will hold the books & highlights
+    // declare an empty object that will hold the books & highlights
     const books = {};
 
     for(let i = 0; i < clippings.length; i++) {
 
         // split each clipping in clippings into component parts whenever there's a new line
-        let clipping = clippings[i].split('\n');
+        let clipping = clippings[i].split('\r\n');
         clipping = clipping.filter(e => e.length);
 
         // in case the entry is blank (seems like the last entry is always blank based on the txt file format)
@@ -49,6 +49,9 @@ fs.readFile(file, 'utf8', (err, data) => {
         /* TODO: get other meta details, eg location of highlight and date, and whether it is a highlight or a note.
            - these are in clipping[1], need to extract the relevant parts
         */
+        if (!highlight) {
+          continue;
+        };
 
         if (books[title]) {
           books[title].push(highlight);
@@ -58,14 +61,15 @@ fs.readFile(file, 'utf8', (err, data) => {
         }
     }
 
-    // Loop through each book and write its contents to txt file
+    // Loop through each book and write its contents to output file
 
     Object.keys(books).forEach((title) => {
       const highlights = books[title];
       txtFilePath = pathName + title + '.md';
 
       for (let i = 0; i < highlights.length; i++) {
-        // conditional write function since we shouldn't append to the same files again and again when we run the script multiple times
+        // conditional write function since we shouldn't append to the same files again and again when we run the script multiple times    
+        
         function write(text) {
           if (i === 0) {
             fs.writeFile(txtFilePath, text + "\n\n", (err) => {
