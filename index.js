@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const fs = require('fs');
 const path = require('path');
 
@@ -60,7 +62,7 @@ fs.readFile(file, 'utf8', (err, data) => {
 
     Object.keys(books).forEach((title) => {
       const highlights = books[title];
-      txtFilePath = pathName + title + '.txt';
+      txtFilePath = pathName + title + '.md';
 
       for (let i = 0; i < highlights.length; i++) {
         // conditional write function since we shouldn't append to the same files again and again when we run the script multiple times
