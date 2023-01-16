@@ -87,29 +87,3 @@ fs.readFile(file, 'utf8', (err, data) => {
     });
 });
 
-// Using fs sync methods with utf8 encoding because I expect the file sizes won't be TOO big 
-// anything larger than (or even approaching) the memory allocation of the Node.js runtime will cause issues
-// that can be resolved by using readstreams and processing files chunk by chunk, but the logic is far trickier to write
-function verySimplified(inputFilePath = process.argv[2]) {
-  const booksDir = path.join(__dirname, "books");
-  // making our books dir if it doesn't exist
-  const booksDirExists = fs.existsSync(booksDir);
-  if (!booksDirExists) fs.mkdirSync(booksDir);
-
-  const imputFileText = fs.readFileSync(inputFilePath, "utf8");
-  const previouslySeenTitles = new Set();
-
-  // looping over entries from the input file
-  imputFileText.split(/={10}/).forEach(clipping => {
-    // parsing the title and highlight from each entry
-    const lines = clipping.split("\n").filter(line => line);
-    if (lines.length === 0) return;
-    const [title, _, highlight] = lines;
-
-    // conditionally writing/appending the highlight to output file
-    const seenBefore = previouslySeenTitles.has(title);
-    const bookFilePath = path.join(__dirname, "books", `${title}.txt`);
-    fs[seenBefore ? "appendFileSync" : "writeFileSync"](bookFilePath, `${seenBefore && "\n\n"}${highlight}`, "utf8");
-    previouslySeenTitles.add(title);
-  });
-}
